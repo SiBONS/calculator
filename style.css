@@ -28,7 +28,8 @@ body {
     height: 120px;
     background: linear-gradient(rgb(10, 58, 10), rgb(44, 150, 17));
     margin-bottom: 1em;
-
+    border: 2px solid rgb(29, 4, 29);
+    border-radius: 5px;
 }
 
 #display-main {
