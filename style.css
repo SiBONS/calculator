@@ -16,7 +16,7 @@ body {
     padding: 1.5em;
     border: 2px solid rgb(230, 174, 22);
     border-radius: 20px;
-    background-color: #080c33;
+    background-color: #191c35;
      box-shadow:
     0 0 0 1px #3a1060,
     4px 4px 0px #0a0015,
@@ -65,14 +65,6 @@ body {
   box-shadow: 0 1px 0 #000;
 }
 
-.button:hover {
-    background-color: rgb(9, 41, 83);
-  text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18;
-  transition: 450ms ease-in-out;
-}
-
-
-
 .equals {
     grid-column: span 2;
 }
@@ -93,4 +85,10 @@ body {
   color: #49ff18;
   text-shadow: 0 0 8px rgba(73,255,24,0.5);
   box-shadow: 0 4px 0 #0f2500, 0 5px 8px rgba(0,0,0,0.4);
+}
+
+.button:hover {
+    background-color: rgb(9, 41, 83);
+ 
+  transition: 450ms ease-in-out;
 }
