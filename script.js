@@ -1,13 +1,45 @@
 // Variables for Display the number and on-off button"
 const toggleBtn = document.querySelector("#on-off");
 const displayMain = document.getElementById("display-main");
+// Maximum number of characters for display
+const MAX_CHARS = 15;
+let isOn = false;
 
+// We have two conditions here. The calculator is off and there are max characters that does not allow
+//to be typed
+function canInput() {
+    if(isOn === false) {
+        return false; // calculator is off ignore the buttons
+    }
+    if(displayMain.textContent.length >= MAX_CHARS) {
+        return false; // display is full ignore the button
+    }
+    return true;
+}
+
+
+
+function onOff() {
+    if (!isOn) {
+        displayMain.style.display = "block";
+        displayMain.textContent = "0";
+         document.getElementById("display").style.backgroundColor ="green";
+         isOn = true;
+    } else {
+        displayMain.style.display = "none";
+        displayMain.style.backgroundColor = "";
+         document.getElementById("display").style.backgroundColor ="rgb(41, 40, 40)";
+        isOn = false;
+        
+    }
+}
 
 toggleBtn.addEventListener("click", onOff);
 
 // Backspace button 
 const backSpace = document.getElementById("backspace");
 backSpace.addEventListener("click", deleteLast => {
+    if(isOn === false) return;
     displayMain.textContent = displayMain.textContent.slice(0, -1) || "0";
 }
 )
@@ -16,10 +48,14 @@ backSpace.addEventListener("click", deleteLast => {
 const numberButtons = document.querySelectorAll('[data-type="number"]');
 numberButtons.forEach(btn => {
     btn.addEventListener("click", function() {
+        if(canInput() === false) {
+            return; // do nothing as one of conditions is that calculator is off
+        }
         if(displayMain.textContent === "0") {
             displayMain.textContent = btn.textContent;
         } else {
-        displayMain.textContent += btn.textContent;}
+        displayMain.textContent += btn.textContent;
+    }
     })
 })
 
@@ -55,6 +91,7 @@ operators.forEach(btn => {
 
 const resetAll = document.getElementById("reset");
 resetAll.addEventListener("click", function() {
+    if(isOn === false) return;
     displayMain.textContent = "0";
 })
 
@@ -76,22 +113,7 @@ decimal.forEach(dot => {
 
 // On/off button
 
-let isOn = false;
 
 
-function onOff() {
-    if (!isOn) {
-        displayMain.style.display = "block";
-        displayMain.textContent = "0";
-         document.getElementById("display").style.backgroundColor ="green";
-         isOn = true;
-       
-    } else {
-        displayMain.style.display = "none";
-        displayMain.style.backgroundColor = "";
-         document.getElementById("display").style.backgroundColor ="rgb(41, 40, 40)";
-        isOn = false;
-        
-    }
-}
+
 
