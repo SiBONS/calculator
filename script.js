@@ -23,7 +23,7 @@ function onOff() {
     if (!isOn) {
         displayMain.style.display = "block";
         displayMain.textContent = "0";
-         document.getElementById("display").style.backgroundColor ="green";
+         document.getElementById("display").style.backgroundColor ="#c29f2b";
          isOn = true;
     } else {
         displayMain.style.display = "none";

@@ -35,9 +35,9 @@ body {
 
 #display-main {
   font-size: 2.6rem;
-  color: #49ff18;
+  color: #ced6cc;
   text-align: right;
-  text-shadow: 0 0 8px rgba(73,255,24,0.6), 0 0 20px rgba(73,255,24,0.25);
+  text-shadow: 0 0 8px rgba(146, 180, 22, 0.6), 0 0 20px rgba(193, 196, 36, 0.733);
   position: relative;
   top: 39px;
   right: 30px;
@@ -58,7 +58,7 @@ body {
     font-family: "Orbitron", sans-serif;
     color: white;
     border-radius: 4%;
-    background-color: rgba(92, 21, 92, 0.808);
+    background-color: rgba(3, 55, 75, 0.808);
     border: none;
       box-shadow: 0 4px 0 #1a0830, 0 5px 8px rgba(0,0,0,0.4);
   transition: transform 80ms, box-shadow 80ms;
@@ -80,20 +80,19 @@ body {
 
 
 #on-off, #reset, #backspace {
-  background: linear-gradient(180deg, #1a3a6e, #112854);
-  color: #80c0ff;
+  background-color: rgb(64, 64, 122);
+  color: #bed2e6;
   font-size: 1rem;
   box-shadow: 0 4px 0 #081530, 0 5px 8px rgba(0,0,0,0.4);
 }
 #plus, #minus, #division, #mult {
-  background: linear-gradient(180deg, #7a5200, #5a3a00);
-  color: rgb(255, 210, 80);
+  background-color: #364363;
+  color: rgb(221, 220, 216);
   box-shadow: 0 4px 0 #2a1a00, 0 5px 8px rgba(0,0,0,0.4);
 }
 #equals {
-  background: linear-gradient(180deg, #3a7a00, #285800);
-  color: #49ff18;
-  text-shadow: 0 0 8px rgba(73,255,24,0.5);
+  background-color: #5f6e9c;
+  color: whitesmoke;
   box-shadow: 0 4px 0 #0f2500, 0 5px 8px rgba(0,0,0,0.4);
    grid-column: span 2;
 }
