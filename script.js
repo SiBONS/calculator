@@ -2,7 +2,7 @@
 const toggleBtn = document.querySelector("#on-off");
 const displayMain = document.getElementById("display-main");
 // Maximum number of characters for display
-const MAX_CHARS = 10;
+const MAX_CHARS = 21;
 let isOn = false;
 
 // We have two conditions here. The calculator is off and there are max characters that does not allow
