@@ -2,7 +2,7 @@
 const toggleBtn = document.querySelector("#on-off");
 const displayMain = document.getElementById("display-main");
 // Maximum number of characters for display
-const MAX_CHARS = 15;
+const MAX_CHARS = 10;
 let isOn = false;
 
 // We have two conditions here. The calculator is off and there are max characters that does not allow
@@ -44,13 +44,11 @@ backSpace.addEventListener("click", deleteLast => {
 }
 )
 
-
+// Number buttons
 const numberButtons = document.querySelectorAll('[data-type="number"]');
 numberButtons.forEach(btn => {
     btn.addEventListener("click", function() {
-        if(canInput() === false) {
-            return; // do nothing as one of conditions is that calculator is off
-        }
+        if(canInput() === false) return; // do nothing as one of conditions is that calculator is off
         if(displayMain.textContent === "0") {
             displayMain.textContent = btn.textContent;
         } else {
@@ -59,35 +57,41 @@ numberButtons.forEach(btn => {
     })
 })
 
+// Operators
 const operators = document.querySelectorAll('[data-type="operator"]');
 operators.forEach(btn => {
     btn.addEventListener("click", function() {
+        if(isOn === false) return;
         const current = displayMain.textContent;
         const lastChar = current.slice(-1); //removes the last character
         const op = btn.textContent;
 
-        switch(op) {
+         switch (op) {
             case "+":
             case "-":
             case "*":
             case "/":
-                // Prevent double operators like "5++", "3*-"
-                if ("+-*/".includes(lastChar)) { // Identifies if the specific sequence of characters exists anywhere in the string
+                if ("+-*/".includes(lastChar)) {
                     displayMain.textContent = current.slice(0, -1) + op;
                 } else {
                     displayMain.textContent += op;
                 }
                 break;
-                case "=":
-                displayMain.textContent = parseFloat(eval(displayMain.textContent).toFixed(2));
-                //parseFloat transforms to integer, toFixed rounds to two decimals
-                break;
-                default:
+            case "=":
+                try {
+                    const result = parseFloat(eval(current).toFixed(10));
+                    if (isFinite(result) === false) {
+                        displayMain.textContent = "Error"; // division by zero
+                    } else {
+                        displayMain.textContent = String(result).slice(0, MAX_CHARS);
+                    }
+                } catch (e) {
+                    displayMain.textContent = "Error";     // "5+" with nothing after
+                }
                 break;
         }
     });
 });
-
 
 const resetAll = document.getElementById("reset");
 resetAll.addEventListener("click", function() {
@@ -98,20 +102,27 @@ resetAll.addEventListener("click", function() {
 
 
 
-
-// The display of the dot(decimal) 
+// Decimal button
 const decimal = document.querySelectorAll('[data-type="decimal"]');
 decimal.forEach(dot => {
     dot.addEventListener("click", function() {
-        if(!displayMain.textContent.includes('.')) { // the condition where decimal can only type in once
-            displayMain.textContent += ".";
+        if (canInput() === false) return;     // added on/off + max chars check
+
+        // Split by operators to get only the number currently being typed
+        const parts = displayMain.textContent.split(/[+\-*/]/);
+        const currentNumber = parts[parts.length - 1];
+
+        if (currentNumber.includes('.') === false) {  //checks current number only
+            const lastChar = displayMain.textContent.slice(-1);
+            if (lastChar === "+" || lastChar === "-" || lastChar === "*" || lastChar === "/") {
+                displayMain.textContent += "0."; // turn "5+" into "5+0."
+            } else {
+                displayMain.textContent += ".";
+            }
         }
-       
     });
 });
 
-
-// On/off button
 
 
 
