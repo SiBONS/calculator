@@ -132,3 +132,21 @@ body {
         font-size: 0.7rem;
     }
 }
+
+/* Footer */
+footer {
+    position: fixed;
+    width: 100%;
+    margin: 0;
+    color: white;
+    text-align: center;
+    padding: 2em;
+    background-color: #364363;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer img {
+    width: 30px;
+}
