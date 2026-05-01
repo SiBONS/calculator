@@ -1,10 +1,12 @@
 // jshint esversion: 6
+// The comment above is for the purpose to tell the validator that we use newer version of JavaScript
 
-// Variables for Display the number and on-off button"
+
+// Fetching variables for Display the number and on-off button"
 const toggleBtn = document.querySelector("#on-off");
 const displayMain = document.getElementById("display-main");
 // Maximum number of characters for display
-const MAX_CHARS = 21;
+const MAX_CHARS = 17;
 let isOn = false;
 
 // We have two conditions here. The calculator is off and there are max characters that does not allow
@@ -14,7 +16,7 @@ function canInput() {
         return false; // calculator is off ignore the buttons
     }
     if(displayMain.textContent.length >= MAX_CHARS) {
-        return false; // display is full ignore the button
+        return false; // display is full, ignore the button
     }
     return true;
 }
@@ -83,7 +85,7 @@ operators.forEach(btn => {
                 try {
                     const result = parseFloat(eval(current).toFixed(10));
                     if (isFinite(result) === false) {
-                        displayMain.textContent = "Error"; // division by zero
+                        displayMain.textContent = "Invalid operation"; // division by zero
                     } else {
                         displayMain.textContent = String(result).slice(0, MAX_CHARS);
                     }
@@ -100,8 +102,6 @@ resetAll.addEventListener("click", function() {
     if(isOn === false) return;
     displayMain.textContent = "0";
 });
-
-
 
 
 // Decimal button
