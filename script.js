@@ -1,3 +1,5 @@
+// jshint esversion: 6
+
 // Variables for Display the number and on-off button"
 const toggleBtn = document.querySelector("#on-off");
 const displayMain = document.getElementById("display-main");
@@ -42,7 +44,7 @@ backSpace.addEventListener("click", deleteLast => {
     if(isOn === false) return;
     displayMain.textContent = displayMain.textContent.slice(0, -1) || "0";
 }
-)
+);
 
 // Number buttons
 const numberButtons = document.querySelectorAll('[data-type="number"]');
@@ -54,8 +56,8 @@ numberButtons.forEach(btn => {
         } else {
         displayMain.textContent += btn.textContent;
     }
-    })
-})
+    });
+});
 
 // Operators
 const operators = document.querySelectorAll('[data-type="operator"]');
@@ -97,7 +99,7 @@ const resetAll = document.getElementById("reset");
 resetAll.addEventListener("click", function() {
     if(isOn === false) return;
     displayMain.textContent = "0";
-})
+});
 
 
 
